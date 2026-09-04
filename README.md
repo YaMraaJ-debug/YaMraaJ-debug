@@ -40,13 +40,13 @@
 
 | ⚡ Metric             |              📊 Live Count |
 | -------------------- | -------------------------: |
-| 🟢 Contributions     | **<!-- CONTRIBUTIONS -->** |
-| 📦 Repositories      |  **<!-- REPOSITORIES -->** |
-| 🚀 Original Projects |      **<!-- PROJECTS -->** |
-| ⭐ Stars              |         **<!-- STARS -->** |
-| 👥 Followers         |     **<!-- FOLLOWERS -->** |
-| 🔗 Following         |     **<!-- FOLLOWING -->** |
-| 💻 Languages         |     **<!-- LANGUAGES -->** |
+| 🟢 Contributions     | **11** |
+| 📦 Repositories      |  **179** |
+| 🚀 Original Projects |      **43** |
+| ⭐ Stars              |         **19** |
+| 👥 Followers         |     **47** |
+| 🔗 Following         |     **92** |
+| 💻 Languages         |     **HTML • JavaScript • Python • PHP • CSS • Blade • SCSS • Shell** |
 
 </div>
 
