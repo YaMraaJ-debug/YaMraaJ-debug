@@ -34,35 +34,37 @@
 
 ---
 
-# `02 // GITHUB OVERVIEW`
+## `02 // GITHUB OVERVIEW`
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=YaMraaJ-debug&show_icons=true&hide_border=true&bg_color=050505&title_color=00FFB3&icon_color=00C8FF&text_color=E6E6E6&ring_color=00FFB3&include_all_commits=true&count_private=true" width="49%"/>
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YaMraaJ-debug&layout=compact&hide_border=true&bg_color=050505&title_color=00FFB3&text_color=E6E6E6&langs_count=8" width="42%"/>
-
-</div>
-
-<br>
-
-<div align="center">
-
-| 📊 Metric        | ⚡ Live               |
-| ---------------- | -------------------- |
-| 🟢 Contributions | **GitHub Live**      |
-| 📦 Repositories  | **GitHub Live**      |
-| 🚀 Projects      | **Profile Projects** |
-| ⭐ Stars          | **GitHub Live**      |
-| 👥 Followers     | **GitHub Live**      |
-| 🔗 Following     | **GitHub Live**      |
-| 💻 Languages     | **Auto Detected**    |
+| ⚡ Metric             |              📊 Live Count |
+| -------------------- | -------------------------: |
+| 🟢 Contributions     | **<!-- CONTRIBUTIONS -->** |
+| 📦 Repositories      |  **<!-- REPOSITORIES -->** |
+| 🚀 Original Projects |      **<!-- PROJECTS -->** |
+| ⭐ Stars              |         **<!-- STARS -->** |
+| 👥 Followers         |     **<!-- FOLLOWERS -->** |
+| 🔗 Following         |     **<!-- FOLLOWING -->** |
+| 💻 Languages         |     **<!-- LANGUAGES -->** |
 
 </div>
 
 ---
 
-## `03 // CONTRIBUTION SIGNAL`
+## `03 // GITHUB SIGNAL`
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=YaMraaJ-debug&show_icons=true&hide_border=true&bg_color=050505&title_color=00FFB3&icon_color=00C8FF&text_color=E6E6E6&ring_color=00FFB3" width="49%"/>
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YaMraaJ-debug&layout=compact&hide_border=true&bg_color=050505&title_color=00FFB3&text_color=E6E6E6&langs_count=8" width="42%"/>
+
+</div>
+
+---
+
+## `04 // CONTRIBUTION SIGNAL`
 
 <div align="center">
 
@@ -76,21 +78,17 @@
 
 ---
 
-## `04 // LANGUAGE MATRIX`
+## `05 // LANGUAGE MATRIX`
 
 <div align="center">
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YaMraaJ-debug&layout=donut&hide_border=true&bg_color=050505&title_color=00FFB3&text_color=E6E6E6&langs_count=10" width="45%"/>
 
-<br>
-
-`Python` • `Shell` • `Dockerfile` • `JavaScript` • `HTML` • `CSS` • `Other`
-
 </div>
 
 ---
 
-## `05 // CURRENTLY BUILDING`
+## `06 // CURRENTLY BUILDING`
 
 <div align="center">
 
@@ -129,7 +127,7 @@
 
 ---
 
-## `06 // FEATURED PROJECTS`
+## `07 // FEATURED PROJECTS`
 
 | Project                          | Purpose                           | Language |
 | -------------------------------- | --------------------------------- | -------- |
@@ -137,12 +135,12 @@
 | 🤖 **mirror-leech-telegram-bot** | Telegram mirror / leech system    | Python   |
 | ☁️ **CloneBot_Heroku**           | Google Drive based bot            | Python   |
 | 🐧 **ubuntu-in-termux**          | Ubuntu environment for Termux     | Shell    |
-| 📡 **osi.ig**                    | Instagram information tool        | Python   |
+| 📡 **osi.ig**                    | Information tool                  | Python   |
 | 🧰 **EXTRACTOR**                 | Utility / extraction project      | Python   |
 
 ---
 
-## `07 // TECH STACK`
+## `08 // TECH STACK`
 
 <div align="center">
 
@@ -150,13 +148,13 @@
 
 <br><br>
 
-`Python` `Bash` `Linux` `Termux` `Git` `GitHub` `Docker` `SQLite`
+`Python` • `Bash` • `Linux` • `Termux` • `Git` • `GitHub` • `Docker` • `SQLite`
 
 </div>
 
 ---
 
-## `08 // WHAT I BUILD`
+## `09 // WHAT I BUILD`
 
 ```text
 ┌────────────────────────────────────────────────────────────┐
@@ -174,7 +172,7 @@
 
 ---
 
-## `09 // BUILD PROCESS`
+## `10 // BUILD PROCESS`
 
 <div align="center">
 
@@ -200,7 +198,7 @@
 
 ---
 
-## `10 // GITHUB ACTIVITY`
+## `11 // GITHUB TROPHIES`
 
 <div align="center">
 
@@ -210,7 +208,7 @@
 
 ---
 
-## `11 // SYSTEM STATUS`
+## `12 // SYSTEM STATUS`
 
 <div align="center">
 
@@ -226,8 +224,6 @@
 ║                                                      ║
 ╚══════════════════════════════════════════════════════╝
 ```
-
-<br>
 
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=16&duration=3000&pause=1200&color=00C8FF&center=true&vCenter=true&width=680&lines=Code+the+idea.;Make+it+useful.;Keep+learning.;Keep+building.+%E2%9A%A1" alt="Footer animation"/>
 
