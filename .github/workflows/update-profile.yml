@@ -1,0 +1,206 @@
+name: Update GitHub Profile Stats
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate live GitHub statistics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: YaMraaJ-debug
+        run: |
+          python3 <<'PY'
+          import os
+          import json
+          import urllib.request
+          import urllib.error
+
+          token = os.environ["GITHUB_TOKEN"]
+          username = os.environ["USERNAME"]
+
+          query = """
+          query($login:String!, $cursor:String) {
+            user(login:$login) {
+              followers { totalCount }
+              following { totalCount }
+
+              repositories(
+                first:100
+                after:$cursor
+                ownerAffiliations:OWNER
+                privacy:PUBLIC
+                orderBy:{field:UPDATED_AT,direction:DESC}
+              ) {
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+                nodes {
+                  name
+                  isFork
+                  stargazerCount
+                  primaryLanguage {
+                    name
+                  }
+                  languages(first:20, orderBy:{field:SIZE,direction:DESC}) {
+                    edges {
+                      size
+                      node {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                }
+              }
+            }
+          }
+          """
+
+          headers = {
+              "Authorization": f"bearer {token}",
+              "Content-Type": "application/json",
+              "User-Agent": "YaMraaJ-profile-updater"
+          }
+
+          repos = []
+          cursor = None
+          user_info = None
+
+          while True:
+              payload = json.dumps({
+                  "query": query,
+                  "variables": {
+                      "login": username,
+                      "cursor": cursor
+                  }
+              }).encode()
+
+              request = urllib.request.Request(
+                  "https://api.github.com/graphql",
+                  data=payload,
+                  headers=headers,
+                  method="POST"
+              )
+
+              try:
+                  with urllib.request.urlopen(request) as response:
+                      data = json.loads(response.read())
+              except urllib.error.HTTPError as e:
+                  print(e.read().decode())
+                  raise
+
+              if "errors" in data:
+                  print(json.dumps(data["errors"], indent=2))
+                  raise SystemExit("GitHub GraphQL request failed")
+
+              user_info = data["data"]["user"]
+              page = user_info["repositories"]
+
+              repos.extend(page["nodes"])
+
+              if not page["pageInfo"]["hasNextPage"]:
+                  break
+
+              cursor = page["pageInfo"]["endCursor"]
+
+          contributions = user_info["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+          followers = user_info["followers"]["totalCount"]
+          following = user_info["following"]["totalCount"]
+
+          total_repositories = len(repos)
+
+          original_repositories = [
+              repo for repo in repos
+              if not repo["isFork"]
+          ]
+
+          projects = len(original_repositories)
+
+          stars = sum(repo["stargazerCount"] for repo in repos)
+
+          language_bytes = {}
+
+          for repo in repos:
+              for edge in repo["languages"]["edges"]:
+                  name = edge["node"]["name"]
+                  size = edge["size"]
+                  language_bytes[name] = language_bytes.get(name, 0) + size
+
+          languages = sorted(
+              language_bytes.items(),
+              key=lambda x: x[1],
+              reverse=True
+          )
+
+          language_names = [name for name, _ in languages[:8]]
+
+          language_text = " • ".join(language_names) if language_names else "N/A"
+
+          replacements = {
+              "<!-- CONTRIBUTIONS -->": f"{contributions:,}",
+              "<!-- REPOSITORIES -->": f"{total_repositories:,}",
+              "<!-- PROJECTS -->": f"{projects:,}",
+              "<!-- STARS -->": f"{stars:,}",
+              "<!-- FOLLOWERS -->": f"{followers:,}",
+              "<!-- FOLLOWING -->": f"{following:,}",
+              "<!-- LANGUAGES -->": language_text,
+          }
+
+          readme_path = "README.md"
+
+          with open(readme_path, "r", encoding="utf-8") as f:
+              readme = f.read()
+
+          for marker, value in replacements.items():
+              readme = readme.replace(marker, value)
+
+          with open(readme_path, "w", encoding="utf-8") as f:
+              f.write(readme)
+
+          print("======================================")
+          print(" GitHub Profile Statistics Updated")
+          print("======================================")
+          print(f"Contributions : {contributions:,}")
+          print(f"Repositories  : {total_repositories:,}")
+          print(f"Projects      : {projects:,}")
+          print(f"Stars         : {stars:,}")
+          print(f"Followers     : {followers:,}")
+          print(f"Following     : {following:,}")
+          print(f"Languages     : {language_text}")
+          print("======================================")
+          PY
+
+      - name: Commit updated statistics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md
+
+          if git diff --cached --quiet; then
+            echo "No statistics changes."
+          else
+            git commit -m "chore: update GitHub profile statistics"
+            git push
+          fi
